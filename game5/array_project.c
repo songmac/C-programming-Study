@@ -7,7 +7,8 @@
 int main(void)
 {
     // 0. 변수 초기화
-    srand(time(NULL));                              // 난수 생성기 초기화
+    srand(time(NULL)); // 난수 생성기(rand) 초기화 : 시드값 설정(srand) + 시드(time(NULL)) + time()으로 초단위 현재시간을 가져옴
+                       // rand() : 0~RAND_MAX까지의 난수 생성 (RAND_MAX는 32767), 이것만 쓰면 랜덤값이 고정됨
     printf("\n\n === 아빠는 대머리 게임 === \n\n"); // 게임 설명 : 발모제를 맞추는 게임
 
     int answer;                 // 사용자 입력값 (1~4)

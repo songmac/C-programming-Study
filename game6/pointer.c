@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+void swap(int a, int b);
+void swap_addr(int* a, int* b);
+
 int main(void)
 {
 
@@ -113,10 +116,55 @@ int main(void)
 
 
     // swap
-    
+    int a = 10;
+    int b = 20; 
+    printf("\n--- main 함수 내 ---\n");
+    printf("a의 주소 : %d\n", &a);
+    printf("b의 주소 : %d\n", &b); 
+
+    // a와 b의 값을 바꾸기
+    printf("Swap 함수 전 => a: %d, b: %d\n", a, b); // Swap 함수 전 => a: 10, b: 20
+    swap(a, b); // a와 b의 값만 복사해서 swap 함수에 전달 (값에 의한 복사/호출 -> call by value) 
+    printf("Swap 함수 후 => a: %d, b: %d\n", a, b); // Swap 함수 후 => a: 20, b: 10
+
+    // 주소값을 넘기기
+    printf("\n--- (주소 값 전달) main 함수 내 ---\n");
+    printf("a의 주소 : %d\n", &a);
+    printf("b의 주소 : %d\n", &b); 
+    printf("Swap 함수 전 => a: %d, b: %d\n", a, b); // Swap 함수 전 => a: 10, b: 20
+    swap_addr(&a, &b); // a와 b의 주소를 넘김 (주소에 의한 복사/호출 -> call by reference)
+    printf("Swap 함수 후 => a: %d, b: %d\n", a, b); // Swap 함수 후 => a: 20, b: 10  
+
 
     return 0;
 }
+
+void swap(int a, int b)
+{
+    int temp = a;
+    a = b;
+    b = temp;
+    printf("\n--- swap 함수 내 ---\n");
+    printf("a의 주소 : %d\n", &a);
+    printf("b의 주소 : %d\n", &b); 
+
+    printf("Swap 함수 내 => a: %d, b: %d\n", a, b); // Swap 함수 후 => a: 20, b: 10
+}
+
+void swap_addr(int* a, int* b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+    printf("\n--- (주소 값 전달) swap 함수 내 ---\n");
+    printf("a의 주소 : %d\n", a); 
+    printf("b의 주소 : %d\n", b); 
+
+    printf("Swap 함수 내 => a: %d, b: %d\n", *a, *b); // Swap 함수 후 => a: 20, b: 10
+}
+
+
+
 
 // int a = 10;
 // int* p = &a;

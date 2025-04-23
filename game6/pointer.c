@@ -72,7 +72,6 @@ int main(void)
     printf("스파이 주소 : %d, 암호 : %d\n", &스파이, 스파이); // 스파이 주소 : 메모리상 임의의 주소로 나옴, 암호 : 메모리상 임의의 주소로 나옴
 
 
-    */
     // 배열과 포인터의 관계 
     // 배열
     int arr[3] = {5, 10, 15};
@@ -87,16 +86,6 @@ int main(void)
         // printf("포인터 ptr[%d]의 값 : %d\n", i, ptr[i]); // 포인터를 사용하여 배열의 값을 출력
         printf("포인터 ptr[%d]의 값 : %d\n", i, *(ptr + i)); 
     }
-    // *(arr + i) == arr[i] 똑같은 표현
-    // arr == arr 배열의 첫번째 값의 주소와 동일 == &arr[0]
-    printf("arr 자체의 값 : %d\n", arr);
-    printf("arr[0] 의 주소 : %d\n", &arr[0]);
-
-    printf("arr (자체의 값이 가지는 주소의) 실제 값 : %d\n", *arr); // *(arr + 0)
-    printf("arr[0] 의 실제 값 : %d\n", *(&arr[0]));
-
-
-    /*
     // 포인터의 값 변경
     ptr[0] = 100;
     ptr[1] = 200;
@@ -110,7 +99,21 @@ int main(void)
     {
         printf("포인터 ptr[%d]의 값 : %d\n", i, ptr[i]);
     } 
-    */  
+
+    // *(arr + i) == arr[i] 똑같은 표현
+    // arr == arr 배열의 첫번째 값의 주소와 동일 == &arr[0]
+    printf("arr 자체의 값 : %d\n", arr);
+    printf("arr[0] 의 주소 : %d\n", &arr[0]);
+
+    printf("arr (자체의 값이 가지는 주소의) 실제 값 : %d\n", *arr); // *(arr + 0)
+    printf("arr[0] 의 실제 값 : %d\n", *(&arr[0])); // *&는 아무것도 없는 것과 같음. 즉, 서로 상쇄됨 (&:주소, *:주소의 값)
+    printf("arr[0] 의 실제 값 : %d\n", *&*&*&*&*&*&arr[0]); // 상쇄됨을 다시 한번 확인
+    printf("arr[0] 의 실제 값 : %d\n", arr[0]); 
+    */
+
+
+    // swap
+    
 
     return 0;
 }

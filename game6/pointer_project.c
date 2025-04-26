@@ -12,6 +12,8 @@ int level;
 int arrayFish[6]; // 물고기 6마리의 어항 높이 (0~100)
 int * cursor; // 커서 (물주기 위치) (0~5)
 void initData(); // 초기화 함수 선언
+void printfFishes(); // 물고기 어항 상태 출력
+
 
 int main(void)
 {
@@ -28,6 +30,7 @@ int main(void)
     while (1) // 물고기가 다 죽거나 레벨업 완료할 때까지 진행
     {
         printfFishes(arrayFish, cursor); // 물고기 어항 상태 출력
+        getchar(); // 사용자 입력 대기
     }
 
 
@@ -47,5 +50,10 @@ void initData(void) // 어항 높이 초기화
 void printfFishes() // 물고기 어항 상태 출력
 {
     printf("%3d번 %3d번 %3d번 %3d번 %3d번 %3d번 \n", 1, 2, 3, 4, 5, 6);
+    for (int i = 0; i < 6; i++)
+    {
+        printf(" %4d ", arrayFish[i]);
+    }
+    printf("\n\n");
 
 }

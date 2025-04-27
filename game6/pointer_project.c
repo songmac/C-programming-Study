@@ -30,7 +30,27 @@ int main(void)
     while (1) // 물고기가 다 죽거나 레벨업 완료할 때까지 진행
     {
         printfFishes(arrayFish, cursor); // 물고기 어항 상태 출력
-        getchar(); // 사용자 입력 대기
+        // getchar(); // (임시로) 사용자 입력 대기 확인용
+        printf("몇 번 어항에 물을 주시겠어요? ");
+        scanf_s("%d", &num); // 물을 줄 어항 번호 입력 받기 (1~6)
+
+        // 입력값 체크 
+        //번호가 123... 이렇게 연속적으로 입력될 경우 1, 2 가 아닌 12로 입력될 경우를 방지
+        if (num < 1 || num > 6) // 입력값이 1~6이 아닐 경우
+        {
+            printf("잘못된 입력입니다. 다시 입력하세요.\n\n");
+            continue; // 잘못된 입력일 경우 다시 물어보기
+        }
+
+        // 총 경과 시간
+        totalElapsedTime = (clock() - startTime) / CLOCKS_PER_SEC; // 경과 시간 계산 (초 단위)
+        printf("총 경과 시간 : %ld 초\n", totalElapsedTime);
+
+        // 직전 물 준 시간 (마지막으로 물 준 시간) 이후로 흐른 시간
+        prevElapsedTime = totalElapsedTime - prevElapsedTime; // 직전 물 준 시간 이후로 흐른 시간 계산 (초 단위)
+        printf("최근 경과 시간 : %ld 초\n", prevElapsedTime);
+
+
     }
 
 

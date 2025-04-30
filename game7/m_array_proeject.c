@@ -12,6 +12,9 @@ char * strAnimal[10]; // 동물 이름
 void initAnimalArray();
 void initAnimalName();
 void shuffleAnimal();
+int getEmptyPosition();
+void conv_pos_x();
+void conv_pos_y();
 
 int main(void)
 {
@@ -50,6 +53,36 @@ void initAnimalName()
 }
 
 void shuffleAnimal()
+{
+    // ㅁㅁㅁㅁㅁ
+    // ㅁㅁㅁㅁㅁ
+    // ㅁㅁㅁㅁㅁ
+    // ㅁㅁㅁㅁㅁ
+    
+    for (int i = 0; i < 10; i++)
+    {
+        for (int j = 0; j < 2; j++)
+        {
+            int pos = getEmptyPosition();
+            int x = conv_pos_x(pos);
+            int y = conv_pos_y(pos);
+
+            arrayAnimal[x][y] = i; // 동물 이름 중 하나가 카드 지도에 좌표처럼 들어감
+        }
+    }
+}
+
+int getEmptyPosition() // 좌표에서 빈 공간 찾기
+{
+    while(1)
+}
+
+void conv_pos_x()
+{
+
+}
+
+void conv_pos_y()
 {
 
 }

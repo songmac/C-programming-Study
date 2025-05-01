@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <windows.h>
+
 // 10마리의 서로 다른 동물 (각 카드 2장씩)
 // 사용자로부터 2개의 입력값을 받아서 -> 같은 동물 찾으면 카드 뒤집기
 // 모든 동물 쌍을 찾으면 게임 종료
@@ -22,6 +24,9 @@ int foundAllAnimals();
 
 int main(void)
 {
+    // UTF-8 출력
+    // SetConsoleOutputCP(CP_UTF8);
+
     srand(time(NULL));
 
     initAnimalArray();
@@ -38,7 +43,8 @@ int main(void)
         printAnimals();  // 동물 위치 출력
         printQuestion(); // 문제 출력 (카드 지도)
         printf("뒤집을 카드를 2개 고르세요 : ");
-        scanf_s("%d %d", &select1, &select2);
+        // scanf_s("%d %d", &select1, &select2); // Visual Studio 전용 안전 함수
+        scanf("%d %d", &select1, &select2); // 표준 scanf
 
         if (select1 == select2) // 같은 카드 선택 시 무효
         {
@@ -57,9 +63,9 @@ int main(void)
         if ((checkAnimal[firstSelect_x][firstSelect_y] == 0 && checkAnimal[secondSelect_x][secondSelect_y] == 0) // 카드가 뒤집히지 않았는지
             && (arrayAnimal[firstSelect_x][firstSelect_y] == arrayAnimal[secondSelect_x][secondSelect_y]))       // 두 동물이 같은지
         {
-            printf("\n\n빙고! : %s 발견\n\n", strAnimal[firstSelect_x][firstSelect_y]);
-            checkAnimal[firstSelect_x][firstSelect_y] == 1;
-            checkAnimal[secondSelect_x][secondSelect_y] == 1;
+            printf("\n\n빙고! : %s 발견\n\n", strAnimal[arrayAnimal[firstSelect_x][firstSelect_y]]);
+            checkAnimal[firstSelect_x][firstSelect_y] = 1;
+            checkAnimal[secondSelect_x][secondSelect_y] = 1;
         }
         // 다른 동물인 경우
         else
@@ -71,6 +77,7 @@ int main(void)
 
             failCount++;
         }
+
         // 모든 동물을 찾았는지 여부 (1:참, 0:거짓)
         if (foundAllAnimals() == 1)
         {
@@ -85,11 +92,12 @@ int main(void)
 
 void initAnimalArray()
 {
-    for (int i; i < 4; i++)
+    for (int i = 0; i < 4; i++)
     {
-        for (int j; j < 4; j++)
+        for (int j = 0; j < 5; j++)
         {
             arrayAnimal[i][j] = -1; // 우선 -1로 초기화
+            checkAnimal[i][j] = 0;
         }
     }
 }
@@ -170,16 +178,16 @@ void printAnimals() // (랜덤으로 들어간) 동물 위치 출력
     // ㅁㅁㅁㅁㅁ  5  4  3  5  9
     // ㅁㅁㅁㅁㅁ  6  3  10 1  8
     // ㅁㅁㅁㅁㅁ  9  7  7  4  8
-    printf("\n=====이건 비밀인데... 몰래 보여줍니다====\n\n");
+    printf("\n=======이건 비밀인데... 몰래 보여줍니다=====\n\n");
     for (int i = 0; i < 4; i++)
     {
         for (int j = 0; j < 5; j++)
         {
-            printf("%8s", strAnimal[arrayAnimal[i][j]]);
+            printf("%-8s   ", strAnimal[arrayAnimal[i][j]]);
         }
         printf("\n");
     }
-    printf("\n====================================\n\n");
+    printf("\n============================================\n\n");
 }
 
 void printQuestion() // 문제 출력 (카드 지도)
@@ -202,7 +210,9 @@ void printQuestion() // 문제 출력 (카드 지도)
             {
                 printf("%8d", seq);
             }
+            seq++;
         }
+        printf("\n");
     }
 }
 

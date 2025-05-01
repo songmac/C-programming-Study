@@ -22,9 +22,19 @@ int main(void)
     initialArray();
     initAnimalName();
     shuffleAnimal();
-    int getEmptyPosition();
-    int conv_pos_x(int x);
-    int conv_pos_y(int y);
+
+    int failCount = 0; // 실패 횟수
+
+    while (1)
+    {
+        int select1 = 0; // 사용자가 선택한 첫번째 수
+        int select2 = 0; // 사용자가 선택한 두번째 수
+
+        printAnimals(); // 동물 위치 출력
+        printQuestion(); // 문제 출력 (카드 지도)
+        printf("뒤집을 카드를 2개 고르세요 : ");
+        scanf_s("%d %d", &select1, &select2);
+    }
 
     return 0;
 }
@@ -106,4 +116,14 @@ int conv_pos_y(int y)
 {
     // 19 -> (3, 4)
     return y % 5; // 1 ~ 4 (규칙 : 5로 나눈 나머지 값)
+}
+
+void printAnimals()
+{
+
+}
+
+void printQuestion()
+{
+    
 }

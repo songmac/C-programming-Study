@@ -1,7 +1,17 @@
 #include <stdio.h>
 
+// 구조체 선언 (전역 위치에)
+// 구조체 : 반복되는 정보를 관리할 때 용이 
+struct GameInfo{
+    char * name = "나도게임";
+    int year = 2017;
+    int price = 50;
+    char * company = "나도회사";
+};
+
 int main(void)
 {
+    /*
     // [게임 출시]
     // 이름 : 나도 게임
     // 발매년도 : 2017 년
@@ -22,6 +32,29 @@ int main(void)
     int year2 = 2017;
     int price2 = 100;
     char * company2 = "너도회사";
+    */
+
+    // 구조체 사용
+    struct GameInfo gameInfo1; // struct GamdInfo 까지 자료형, 그 이후가 변수명임
+    struct GameInfo gameInfo2; 
+    gameInfo1.name = "나도게임";
+    gameInfo1.year = 2017;
+    gameInfo1.price = 50;
+    gameInfo1.company = "나도회사";    
+
+    gameInfo2.name = "너도게임";
+    gameInfo2.year = 2017;
+    gameInfo2.price = 100;
+    gameInfo2.company = "너도회사";    
+
+
+    // 구조체 출력
+    printf("-- 게임 출시 정보 --\n");
+    printf("게임명 : %s\n", gameInfo1.name);
+    printf("발매년도 : %d\n", gameInfo1.year);
+    printf("가격 : %d\n", gameInfo1.price);
+    printf("제작사 : %d\n", gameInfo1.company);
+
 
     return 0;
 }

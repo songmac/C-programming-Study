@@ -9,6 +9,10 @@ struct GameInfo
     int year;
     int price;
     char *company;
+
+    // 구조체 안의 구조체 : 구조체 안에서 똑같은 내용의 구조체를 가질 수 있음
+    struct GameInfo * friendGame;
+
 };
 
 int main(void)
@@ -44,7 +48,6 @@ int main(void)
     gameInfo1.year = 2017;
     gameInfo1.price = 50;
     gameInfo1.company = "나도회사";
-
     // 구조체 출력
     printf("-- 게임 출시 정보 --\n");
     printf("게임명 : %s\n", gameInfo1.name);
@@ -52,6 +55,19 @@ int main(void)
     printf("가격 : %d\n", gameInfo1.price);
     printf("제작사 : %s\n", gameInfo1.company);
 
+    struct GameInfo gameInfo2;
+    gameInfo2.name = "너도게임";
+    gameInfo2.year = 2017;
+    gameInfo2.price = 100;
+    gameInfo2.company = "너도회사";
+    // 구조체 출력
+    printf("\n\n-- 또 다른 게임 출시 정보 --\n");
+    printf("게임명 : %s\n", gameInfo2.name);
+    printf("발매년도 : %d\n", gameInfo2.year);
+    printf("가격 : %d\n", gameInfo2.price);
+    printf("제작사 : %s\n", gameInfo2.company);
+
+    /*
     // 구조체를 배열처럼 초기화
     struct GameInfo gameInfo2 = {"너도게임", 2017, 100, "너도회사"};
     printf("-- 또다른 게임 출시 정보 --\n");
@@ -59,6 +75,7 @@ int main(void)
     printf("발매년도 : %d\n", gameInfo2.year);
     printf("가격 : %d\n", gameInfo2.price);
     printf("제작사 : %s\n", gameInfo2.company);
+    */
 
     // 구조체 배열
     struct GameInfo gameArray[2] = {
@@ -66,11 +83,23 @@ int main(void)
         {"너도게임", 2017, 100, "너도회사"}
     };
 
+    printf("\n\n-- 구조체 배열로 출력한 게임 출시 정보 --\n");
+    printf("게임명 : %s\n", gameArray[0].name);
+    printf("발매년도 : %d\n", gameArray[0].year);
+    printf("가격 : %d\n", gameArray[0].price);
+    printf("제작사 : %s\n", gameArray[0].company);
+    printf("게임명 : %s\n", gameArray[1].name);
+    printf("발매년도 : %d\n", gameArray[1].year);
+    printf("가격 : %d\n", gameArray[1].price);
+    printf("제작사 : %s\n", gameArray[1].company);
+
+
     // 구조체 포인터
     struct GameInfo * gamePtr; // 미션맨
     gamePtr = &gameInfo1;
-    printf("-- 미션맨의 게임 출시 정보 --\n");
+    printf("\n\n-- 미션맨의 게임 출시 정보 --\n");
     /*
+    // 기본 표현
     printf("게임명 : %s\n", (*gamePtr).name); // 포인터가 가리키는 값의 정보에 접근하기 때문에 (*gamePtr) 이라 작성함
     printf("발매년도 : %d\n", (*gamePtr).year);
     printf("가격 : %d\n", (*gamePtr).price);
@@ -81,6 +110,16 @@ int main(void)
     printf("발매년도 : %d\n", gamePtr->year);
     printf("가격 : %d\n", gamePtr->price);
     printf("제작사 : %s\n", gamePtr->company);
+
+
+    // 구조체 안의 구조체
+    // 연관 업체 게임 소개
+    gameInfo1.friendGame = &gameInfo2;
+    printf("\n\n-- 연관 업체의 게임 출시 정보 --\n");
+    printf("게임명 : %s\n", gameInfo1.friendGame->name);
+    printf("발매년도 : %d\n", gameInfo1.friendGame->year);
+    printf("가격 : %d\n", gameInfo1.friendGame->price);
+    printf("제작사 : %s\n", gameInfo1.friendGame->company);
 
     return 0;
 }

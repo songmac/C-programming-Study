@@ -35,7 +35,10 @@ int main(void)
     {
         printf("두근두근~! 어느 고양이의 집사가 될까요? \n 아무키나 눌러서 확인하세요!\n");
         getchar(); // 어떤 키가 들어올 때 까지 대기
-        
+
+        int selected = rand() * 5;
+        printCat(selected);
+
     }
 
     return 0;    
@@ -67,6 +70,19 @@ void initCats()
     cats[4].age = 1;
     cats[4].character = "배고픔";
     cats[4].level = 5;
+}
 
+void printCat(int selected)
+{
+    printf("\n\n== 당신은 이 고양이의 집사가 되었어요! ==\n\n");
+    printf("이름 : %s\n", cats[selected].name);
+    printf("나이 : %d\n", cats[selected].age);
+    printf("특징(성격): %s\n", cats[selected].character);
+    printf("레벨 : ");
 
+    for (int i = 0; i < cats[selected].level; i++)
+    {
+        printf("%s", "⭐");
+    }
+    printf("\n\n");
 }

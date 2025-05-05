@@ -7,6 +7,14 @@
 // 중복 발생 가능!
 
 
+// 고양이
+// 이름, 나이, 성격, 키우기 난이도 (레벨)
+typedef struct {
+    char * name; // 이름
+    int age; // 나이
+    char * character; // 성격
+    int level; // 키우기 난이도(1~5, 5가 어려움)
+} CAT;
 
 int main(void)
 {

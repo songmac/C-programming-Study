@@ -38,7 +38,6 @@ int main(void)
     // 발매년도 : 2017 년
     // 가격 : 50원
     // 제작사 : 나도회사
-
     char * name = "나도게임";
     int year = 2017;
     int price = 50;
@@ -145,20 +144,20 @@ int main(void)
     printf("\n정수변수 : %d, 실수변수 : %.2f\n\n", 정수변수, 실수변수);
 
     
-    typedef struct GameInfo 게임정보;
+    typedef struct GameInfo 게임정보; // typedef로 선언했을 때, struct 자료형의 별명으로도 작성 가능
     게임정보 game1;
     game1.name = "한글 게임";
     game1.year = 2015;
     printf("게임명 : %s\n",game1.name);
     printf("발매년도 : %d\n", game1.year);
 
-    GAME_INFO game2;
+    GAME_INFO game2; // typedef로 선언했을 때, struct 자료형의 치환형으로도 작성 가능 
     game2.name = "한글 게임2";
     game2.year = 2014;
     printf("게임명 : %s\n",game2.name);
     printf("발매년도 : %d\n", game2.year);
 
-    struct GameInformation game3;
+    struct GameInformation game3; // typedef로 선언했을 때, struct 자료형의 기본 구조체를 활용해서 작성 가능
     game3.name = "한글 게임3";
     game3.year = 2013;
     printf("게임명 : %s\n",game3.name);

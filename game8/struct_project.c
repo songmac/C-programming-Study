@@ -42,6 +42,10 @@ int main(void)
         collection[selected] = 1; // 고양이 뽑기 처리
 
         int collectAll = checkCollection();
+        if (collectAll == 1)
+        {
+            break;
+        }
 
     }
 
@@ -96,6 +100,8 @@ int checkCollection()
     // 1. 현재 보유한 고양이 목록도 출력
     // 2. 다 모았는지 여부를 반환
 
+    int collectAll = 1; // 처음에 왜 1로 선언하는거지? 0으로 해야하는 거 아닌가?
+
     printf("\n\n === 보유한 고양이 목록이에요 === \n\n");
     for (int i = 0; i < 5; i++)
     {
@@ -109,4 +115,11 @@ int checkCollection()
         }
     }
     printf("\n============================== \n\n");
+
+    if (collectAll) // 모든 고양이를 다 모은 경우
+    {
+        printf("\n\n 축하합니다 ! 모든 고양이를 다 모았어요. 열심히 키워주세요\n\n");
+    }
+
+    return collectAll;
 }

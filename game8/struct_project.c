@@ -37,7 +37,11 @@ int main(void)
         getchar(); // 어떤 키가 들어올 때 까지 대기
 
         int selected = rand() * 5;
-        printCat(selected);
+        printCat(selected); // 뽑은 고양이 정보 출력
+        // 고양이 뽑기 처리
+        collection[selected] = 1; // 고양이 뽑기 처리
+
+        int collectAll = checkCollection();
 
     }
 
@@ -86,3 +90,4 @@ void printCat(int selected)
     }
     printf("\n\n");
 }
+

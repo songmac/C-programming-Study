@@ -83,7 +83,7 @@ void initCats()
 
 void printCat(int selected)
 {
-    printf("\n\n== 당신은 이 고양이의 집사가 되었어요! ==\n\n");
+    printf("\n== 당신은 이 고양이의 집사가 되었어요! ==\n");
     printf("이름 : %s\n", cats[selected].name);
     printf("나이 : %d\n", cats[selected].age);
     printf("특징(성격): %s\n", cats[selected].character);
@@ -103,7 +103,7 @@ int checkCollection()
 
     int collectAll = 0; // 처음에 왜 1로 선언하는거지? 0으로 해야하는 거 아닌가?
 
-    printf("\n\n === 보유한 고양이 목록이에요 === \n\n");
+    printf("\n === 보유한 고양이 목록이에요 === \n");
     for (int i = 0; i < 5; i++)
     {
         if (collection[i] == 0) // 고양이 수집 X
@@ -113,9 +113,13 @@ int checkCollection()
         else // 고양이 수집 O
         {
             printf("%10s", cats[i].name);
+            collectAll++;
+        }
+
+        if (collectAll == 5)
+        {
+            return 1;
         }
     }
-    printf("\n============================== \n\n");
-
-    return collectAll;
+    printf("\n\n============================== \n\n\n");
 }

@@ -91,3 +91,22 @@ void printCat(int selected)
     printf("\n\n");
 }
 
+int checkCollection()
+{
+    // 1. 현재 보유한 고양이 목록도 출력
+    // 2. 다 모았는지 여부를 반환
+
+    printf("\n\n === 보유한 고양이 목록이에요 === \n\n");
+    for (int i = 0; i < 5; i++)
+    {
+        if (collection[i] == 0) // 고양이 수집 X
+        {
+            printf("%10s", "(빈 박스)");
+        }
+        else // 고양이 수집 O
+        {
+            printf("%10s", cats[i].name);
+        }
+    }
+    printf("\n============================== \n\n");
+}

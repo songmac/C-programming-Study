@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 
 // 프로젝트 : 고양이 키우기
@@ -7,14 +8,14 @@
 // 5마리 모두 다 수집을 해서 열심히 키우면 되는 게임 !
 // 중복 발생 가능!
 
-
 // 고양이
 // 이름, 나이, 성격, 키우기 난이도 (레벨)
-typedef struct {
-    char * name; // 이름
-    int age; // 나이
-    char * character; // 성격
-    int level; // 키우기 난이도(1~5, 5가 어려움)
+typedef struct
+{
+    char *name;      // 이름
+    int age;         // 나이
+    char *character; // 성격
+    int level;       // 키우기 난이도(1~5, 5가 어려움)
 } CAT;
 
 // 현재까지 보유한 고양이
@@ -24,7 +25,8 @@ int collection[5] = {0, 0, 0, 0, 0};
 CAT cats[5]; // struct 자료형의 치환형으로도 변수 선언 가능
 
 void initCats(); // 고양이 정보 초기화
-
+void printCat(int selected);
+int checkCollection();
 
 int main(void)
 {
@@ -46,10 +48,9 @@ int main(void)
         {
             break;
         }
-
     }
 
-    return 0;    
+    return 0;
 }
 
 void initCats()

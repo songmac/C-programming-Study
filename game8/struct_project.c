@@ -38,7 +38,7 @@ int main(void)
         printf("두근두근~! 어느 고양이의 집사가 될까요? \n 아무키나 눌러서 확인하세요!\n");
         getchar(); // 어떤 키가 들어올 때 까지 대기
 
-        int selected = rand() * 5;
+        int selected = rand() % 5;
         printCat(selected); // 뽑은 고양이 정보 출력
         // 고양이 뽑기 처리
         collection[selected] = 1; // 고양이 뽑기 처리
@@ -46,10 +46,10 @@ int main(void)
         int collectAll = checkCollection();
         if (collectAll == 1)
         {
+            printf("\n\n 축하합니다 ! 모든 고양이를 다 모았어요. 열심히 키워주세요\n\n");
             break;
         }
     }
-
     return 0;
 }
 
@@ -101,7 +101,7 @@ int checkCollection()
     // 1. 현재 보유한 고양이 목록도 출력
     // 2. 다 모았는지 여부를 반환
 
-    int collectAll = 1; // 처음에 왜 1로 선언하는거지? 0으로 해야하는 거 아닌가?
+    int collectAll = 0; // 처음에 왜 1로 선언하는거지? 0으로 해야하는 거 아닌가?
 
     printf("\n\n === 보유한 고양이 목록이에요 === \n\n");
     for (int i = 0; i < 5; i++)
@@ -116,11 +116,6 @@ int checkCollection()
         }
     }
     printf("\n============================== \n\n");
-
-    if (collectAll) // 모든 고양이를 다 모은 경우
-    {
-        printf("\n\n 축하합니다 ! 모든 고양이를 다 모았어요. 열심히 키워주세요\n\n");
-    }
 
     return collectAll;
 }

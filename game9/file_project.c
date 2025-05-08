@@ -39,6 +39,38 @@ int main(void)
     i++;
     }
 
+    
+    // 비밀번호 : sodlfrlwkd (내일기장 영어로)
+    printf("\n\n === 비밀번호 확인 중... +++\n\n");
+    if (strcmp(password, "sodlfrlwkd" == 0)) // 비밀번호 일치
+    {
+        printf(" === 비밀번호 확인 완료 ===\n\n");
+        
+        char * fileName = "C:/Users/selena/songmac/C-programming-Study/game9/secretdiary.txt"; // 파일 경로 설정
+        FILE * file = fopen(fileName, "a+b"); // 파일 열기 (a+b : append + binary 모드로 열기) 
+                                              // 파일이 없으면 생성, 파일이 있으면 append 를 한다 (뒤에서부터 내용을 추가한다)
+        if (file == NULL) // 파일 열기 실패 시
+        {
+            printf("파일 열기 실패 \n");
+            return 1; 
+        }
+
+        else{
+            while (fgets(line, MAX, file) != NULL)
+            {
+                printf("%s", line); // 파일에 저장된 내용 출력
+            }
+            printf("\n\n 내용을 계속 작성하세요! 종료하시려면 EXIT를 입력하세요\n\n");
+ 
+            while (1)
+            {
+                scanf("%[^\n]", contents); // 새 줄(\n)이 나오기 전까지 읽어들임 (한 문장씩 읽어 들임)
+            }
+        }
+
+         
+        
+    }
 
     return 0;
 }

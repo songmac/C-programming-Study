@@ -6,7 +6,6 @@
 
 int main(void)
 {
-
     // 파일 입출력
     // 파일에 어떤 데이터를 저장 
     // 사용하는 이유? 프로그램을 껐다 키면 메모리에 저장된 데이터는 휘발성이기 때문에 날아가지만, 파일로 저장하면 데이터가 남아있게 되므로, 데이터 저장시 유용
@@ -73,7 +72,8 @@ int main(void)
 
     srand(time(NULL));
 
-    FILE * file3 = fopen("C:/Users/selena/songmac/C-programming-Study/game9/test2.txt", "wb"); // 파일 열기 
+    FILE * file3 = fopen("C:/Users/selena/songmac/C-programming-Study/game9/test2.txt", "wb"); // 파일 열기
+    if (file3 == NULL)
     {
         printf("파일 열기 실패\n");
         return 1; // 에러 코드 반환 
@@ -109,7 +109,6 @@ int main(void)
     {
         fscanf(file4, "%s %d %d %d %d %d %d\n", str1, &num[0], &num[1], &num[2], &num[3], &num[4], &num[5]); 
         fscanf(file4, "%s %d\n", str2, &num[6]); 
-        // printf("%s %d %d %d %d %d %d %d\n", str1, num[0], num[1], num[2], num[3], num[4], num[5], num[6]); 
         printf("%s %d %d %d %d %d %d\n", str1, num[0], num[1], num[2], num[3], num[4], num[5]);
         printf("%s %d\n", str2, num[6]);
     }

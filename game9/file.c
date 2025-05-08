@@ -11,6 +11,7 @@ int main(void)
 
 
     // fputs, fgets 쌍
+    // 파일에 쓰기
     char line[MAX];
     FILE * file = fopen("C:/Users/selena/songmac/C-programming-Study/game9/test1.txt", "wb"); // Visual Studio 에서는 역슬래시 두개(\\)로 경로 설정해줘야 함
         // fopen : 파일을 여는 함수, 첫번째 인자 : 파일 경로, 두번째 인자 : 모드
@@ -26,6 +27,38 @@ int main(void)
                   // 항상 닫는 습관을 들여야 함. 그 이유는?
                   // - 파일 닫지 않은 상태에서 프로그램 종료 시, 파일 손상 가능
                   // - 파일 닫지 않은 상태에서 프로그램에 문제가 생기면 데이터 손실 발생 가능
+    // 파일 읽기
+    /*
+    // 파일 쓰기코드를 주석 처리하고, 파일 읽기 코드 작성
+    FILE * file = fopen("C:/Users/selena/songmac/C-programming-Study/game9/test1.txt", "rb"); // 읽기 모드로 파일 열기 (다른 변수로 열어야 함)
+    if (file == NULL)
+    {
+        printf("파일 열기 실패\n");
+        return 1; // 에러 코드 반환
+    }
+    else
+    {
+        while(fgets(line, MAX, file) != NULL)
+        {
+            printf("%s", line);
+        }
+    }
+    */
+    
+    // 파일 쓰기코드를 주석 처리하지 않고, 파일 읽기 코드 작성 (FILE 변수를 다르게 설정 후 읽어야 오류 없이 읽어짐)
+    FILE * file2 = fopen("C:/Users/selena/songmac/C-programming-Study/game9/test1.txt", "rb"); 
+    if (file2 == NULL)
+    {
+        printf("파일 열기 실패\n");
+        return 1; // 에러 코드 반환
+    }
+    else
+    {
+        while(fgets(line, MAX, file2) != NULL)
+        {
+            printf("%s", line);
+        }
+    }
 
 
     // fprintf, fscanf 쌍
